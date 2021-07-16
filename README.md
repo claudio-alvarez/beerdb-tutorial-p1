@@ -4,7 +4,7 @@ En este taller, vamos a diseñar e implementar una base de datos relacional para
 
 ## Pre-Requisitos
 
-Para realizar este taller, puedes descargar todos los archivos necesarios en formato ZIP. Para esto, puedes pinchar el botón Code - de color verde - que aparece arriba de este [texto aquí](https://github.com/claudio-alvarez/beerdb-tutorial-p1/), y luego pinchar en la opción "Download ZIP". Luego de descargar el archivo ZIP lo puedes descomprimir en alguna carpeta que te sea conveniente. Dentro de la carpeta, hay un archivo llamado `beerdb.sqlite3` que utilizaremos más adelante.
+Para realizar este taller, puedes descargar todos los archivos necesarios en formato ZIP. Para esto, puedes pinchar el botón Code - de color verde - que aparece arriba de este texto, y luego pinchar en la opción "Download ZIP". Luego de descargar el archivo ZIP lo puedes descomprimir en alguna carpeta que te sea conveniente. Dentro de la carpeta, hay un archivo llamado `beerdb.sqlite3` que utilizaremos más adelante.
 
 Luego, necesitarás contar con un par de herramientas gratuitas:
 
