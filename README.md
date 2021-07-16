@@ -1,6 +1,6 @@
 # Taller: Diseño e implementación de una base de datos relacional, Parte 1
 
-En este taller, vamos a diseñar e implementar una base de datos relacional. Para comenzar, desarrollaremos un modelo visual de la base de datos. Luego, especificaremos las relaciones en formato textual y crearemos sentencias de SQL (_Database Description Language_, DDL) para crear las tablas respectivas en la base de datos.
+En este taller, vamos a diseñar e implementar una base de datos relacional para una tienda de cervezas al detalle. Para comenzar, desarrollaremos un modelo visual de la base de datos. Luego, especificaremos las relaciones en formato textual y crearemos sentencias de SQL (_Database Description Language_, DDL) para crear las tablas respectivas en la base de datos.
 
 ## Pre-Requisitos
 
@@ -10,11 +10,11 @@ Para realizar este taller, necesitarás contar con un par de herramientas gratui
 
 Cuando te hayas registrado y entres a draw.io, verás un menú de inicio:
 
-<img src="imgs/drawio_menu1.png" style="max-width:25%; display:block; margin-left:auto; margin-right:auto;">
+<img src="imgs/drawio_menu1.png" width="25%" style="width:25%; display:block; margin-left:auto; margin-right:auto;">
 
 Debes elegir la opción "Create New Diagram". Luego, en la ventana siguiente, escoger en el listado a la izquierda "Basic", y en el de la derecha, la opción "Entity Relationship Diagram".
 
-<img src="imgs/drawio_menu2.png" style="width:25%; display:block; margin-left:auto; margin-right:auto;">
+<img src="imgs/drawio_menu2.png" width="25%" style="width:25%; display:block; margin-left:auto; margin-right:auto;">
 
 Una vez creado el documento en blanco, estarás listo(a) para crear un diagrama del tipo "Entidad-Vínculo" (E-V), como veremos más adelante.
 * [Visual Studio Code (VS Code) de Microsoft](https://code.visualstudio.com/). VS Code es una herramienta muy popular entre desarrolladores de software y está disponible gratuitamente para Windows, Mac y Linux. Es posible utilizar bases de datos relacionales y SQL en VS Code si se instala una extensión. Explicaremos aquí cómo se instala la extensión para utilizar bases de datos SQLite.
@@ -26,15 +26,15 @@ Primero, se debe instalar VSCode, siguiendo los pasos a continuación:
 * Abrir el instalador una vez descargado y seguir los pasos. El programa VS Code quedará accesible a través del menú inicio (Windows), con el nombre VS Code, o en la carpeta Aplicaciones (Applications) en Mac.
 * Abrir VS Code y pinchar en el ícono de engranaje que aparece en la parte inferior-izquierda de la ventana. Elegir la opción "Extensions".
 
-<img src="imgs/vscode-gear.png" style="width:25%; display:block; margin-left:auto; margin-right:auto;">
+<img src="imgs/vscode-gear.png" width="25%" style="width:25%; display:block; margin-left:auto; margin-right:auto;">
 
 * Aparecerá una barra de búsqueda arriba a la izquierda con texto "Search Extensions in Market...". Ahí, ingresar "SQLite". En los resultados de búsqueda aparecerá SQLite con descripción "Explore and query SQLite databases". Pinchar el botón azul que dice "Install".
 
-<img src="imgs/vscode-sqlite-install.png" style="width:25%; display:block; margin-left:auto; margin-right:auto;">
+<img src="imgs/vscode-sqlite-install.png" width="25%" style="width:25%; display:block; margin-left:auto; margin-right:auto;">
 
 * Una vez instalada la extensión de SQLite, presionar Ctrl+Shift+P (Windows) o Comando+Shift+P (Mac). Se activará una línea de comando en la parte superior de la ventana, en la cual es posible digitar comandos. Si escribes "SQLite" y aparece una serie de opciones (ver imagen a continuación), entonces VSCode está correctamente instalado con todo lo necesario para realizar este taller.
 
-<img src="imgs/vscode_comandos.png" style="width:25%; display:block; margin-left:auto; margin-right:auto;">
+<img src="imgs/vscode_comandos.png" width="25%" style="width:25%; display:block; margin-left:auto; margin-right:auto;">
 
 ## Diagrama Entidad-Vínculo (E-V)
 
@@ -195,8 +195,22 @@ Crearemos las tablas:
 * `orders`: `id`, `date`, `total`, `customer_id`
 * `beers_orders`: `order_id`, `beer_id`, `amount`
 
-Para crear las tablas en VSCode, presionar Ctrl+Shift+P (Windows) o Comando+Shift+P (Mac), y escoger la opción "SQLite: New Query". Esto creará un archivo vacío que puedes guardar como `create.sql`. En dicho archivo, se deben escribir todas las sentencias `CREATE TABLE` que permitan crear la base de datos. Recuerda que puedes desactivar/comentar líneas en un archivo SQL con doble guión (--) si el comentario es de una sola línea, o (/* comentario aqui */) si se requiere comentar varias líneas.
+Para crear las tablas en VSCode, presionar Ctrl+Shift+P (Windows) o Comando+Shift+P (Mac), y escoger la opción "SQLite: Open Database". Buscar el archivo de base de datos `beerdb.sqlite3` que está disponible junto a este enunciado. Luego, presionar nuevamente la misma combinación de teclas anterior, y escoger la opción "SQLite: New Query". Esto creará un archivo vacío que puedes guardar como `create.sql`. En dicho archivo, se deben escribir todas las sentencias `CREATE TABLE` que permitan crear la base de datos. Recuerda que puedes desactivar/comentar líneas en un archivo SQL con doble guión (--) si el comentario es de una sola línea, o (/* comentario aqui */) si se requiere comentar varias líneas.
 
+Puedes ejecutar las sentencias `CREATE TABLE` presionando la combinación de teclas Ctrl/Comando+Shift+P y luego eligiendo la opción "SQLite: Run Query".
 
+En SQLite hay algunas sentencias especiales que permiten listar las tablas creadas. Si ejecutas:
+
+```sql
+.tables
+```
+
+Aparecerán todas las tablas creadas listadas.
+
+Si quieres ver los detalles de una tabla en particular, puedes usar `.schema`:
+
+```sql
+.schema beers
+```
 
 
