@@ -48,26 +48,29 @@ Existen varias posibles cardinalidades en los vínculos:
 
 En los extremos de la relación, las cardinalidades además pueden precisar si hay vínculo posible con cero entidades. Así, en vez de indicar 1 ó N en un extremo del vínculo, es posible indicar 0..N, o 0..1. Por ejemplo, una Persona podría tener de _cero_ a _N_ Vehículos. También, una Persona podría tener de _cero_ a _un_ Pasaporte.
 
+Por último, un vínculo entre dos entidades, puede tener atributos propios que lo describen. Por ejemplo si "Persona _compra un_ Vehículo", el vínculo _compra un_ puede tener un atributo _fecha_ que indique la fecha en la que se realiza la compra. La definición de atributos en los vínculos sólo se utiliza en casos en que es necesario u oportuno. Lo más común es que los vínculos no tengan atributos.
+
 ## Dominio de Negocio a Modelar
 
 Vamos a crear un diagrama E-V para el mundo de las cervezas. La primera entidad que podemos reconocer aquí es la entidad "Cerveza". Una Cerveza tiene un nombre, p.ej., "patagonia", "Calafate", "Alkoholfrei", o "Lager" y puede corresponder a una cierta Marca; por ejemplo, "Kustmann", "Austral", "Corona", etc. A su vez, una Marca de Cerveza es producida por una cierta Cervecería, por ejemplo, "CCU S.A.".
 
 Existen catadores de cervezas, o sommeliers de cerveza que son conocidos como cicerones. Un Cicerone cata una cerveza y escribe una Evaluación al respecto. Una Cerveza puede tener muchas evaluaciones de distintos cicerones, y a su vez un Cicerone puede escribir muchas evaluaciones, pero una sola por Cerveza. Por último Un Cicerone, igual que cualquier persona, reside en un determinado País.
 
-Vemos en la descripción anterior que existen varias _entidades_ en nuestro dominio del negocio. Las listamos a continuación con su traducción a inglés (esto debido a que más adelante la implementación de la base de datos la realizaremos en inglés):
+Vemos en la descripción anterior que existen varias _entidades_ en nuestro dominio del negocio. Las listamos a continuación con su traducción a inglés (esto debido a que más adelante la implementación de la base de datos la realizaremos en inglés), y atributos, también en inglés:
 
-* Cerveza (Beer)
-* Marca (Brand)
-* Cervecería (Brewery)
-* Evaluación (Review)
-* Cicerone (Cicerone)
-* País (Country)
+* Cerveza (Beer): id*, name, alcvol, flavor, price, contents, unit_price
+* Marca (Brand): id*, name
+* Cervecería (Brewery): name*, estdate
+* Cliente (Customer): email*, first_name, last_name
+* Pedido (Order): id*, date, total
+* País (Country): name*
+
+Indicamos atributos clave con asterisco (el asterisco no es parte del nombre).
 
 Además, observamos que los elementos antes listados se relacionan de las siguientes maneras:
 
 * Una Cerveza pertenece a una Marca, y una Marca tiene una o muchas Cervezas.
 * Una Marca pertenece a una Cervecería, y una Cervecería tiene una o muchas marcas.
-* Un Cicerone escribe una Evaluación de una Cerveza.
 
 ## Paso 1: Crear Diagrama E-V (30 minutos)
 
@@ -75,15 +78,38 @@ Usando [draw.io](https://www.draw.io), crearemos un diagrama E-V para representa
 
 En principio, el proceso de diagramado puede parecer un tanto lento/engorroso. El profesor dará varios consejos sobre cómo utilizar la herramienta draw.io en forma más eficiente. 
 
-## Paso 2: Especificar las relaciones de la base de datos (15 minutos)
+## Paso 2: Especificar las relaciones de la base de datos (20 minutos)
 
-Una vez creado el diagrama E-V, definiremos las relaciones (tablas) de nuestra base de datos. Usaremos la siguiente sintaxis:
+Una vez creado el diagrama E-V, definiremos las relaciones (tablas) de nuestra base de datos. El proceso de definir las tablas se basa en el diagrama E-V, con la siguientes consideraciones:
 
-Nombre_Entidad(atributo_1:tipo, atributo2:tipo, atributo3:tipo)
+* Se crea una tabla por cada entidad. Adoptamos la convención de nombrar cada tabla con el nombre de la entidad en minúsculas, en inglés y en plural. Por ejemplo, para la entidad "Customer" (Cliente) creamos la tabla `customers`.
+* Cada atributo de la entidad pasa a ser una columna de la tabla respectiva. Los nombres de los atributos van en minúscula. Cuando son compuestos por dos o más palabras, se separan por guiones bajos, p.ej., `unit_price`.
+* Cuando se tiene un vínculo 1-N (o 0..1-N) entre dos entidades, a la tabla correspondiente a la entidad del lado de cardinalidad 1 en el vínculo se le agrega una clave foránea a la tabla en el lado de cardinalidad N.
+* Lo anterior vale también para cuando se tiene un vínculo 1-1, pero en este caso, se incorpora después en la definición de la tabla usando SQL/DDL, que la clave foránea es única (_unique_).
+* Cuando se tiene un vínculo N-N, se crea una tabla de unión, con claves foráneas a cada entidad que participa en el vínculo. La clave de la tabla de unión es compuesta por ambas claves foráneas. El nombre de la tabla de unión puede componerse por los nombres de las dos entidades del vínculo, en minúscula, separados por guión bajo.
+* Si un vínculo tiene atributos, éstos se incorporan como columnas a la tabla que contiene la clave foránea. En el caso de un vínculo N-N, los atributos del vínculo se agregan a la tabla de unión.
 
-Es importante verificar qué ocurre cuando una entidad está vinculada a otra. Es decir, cómo se ve reflejado el vínculo cuando definimos las tablas. Analizaremos distintos casos según las cardinalidades de los vínculos:
+Para especificar las tablas, usaremos la siguiente sintaxis:
 
-* 1-1: Creamos una _clave foránea_ en la entidad del lado en donde se inicia el vínculo, por ejemplo, "Una Persona tiene un Pasaporte", consideramos que el vínculo se inicia en Persona. En dicha tabla, debemos incorporar la clave foránea al Pasaporte correspondiente. Además, 
+`Nombre_Entidad(atributo_1, atributo2, ..., atributoN)`
+
+Considerando dicha sintaxis, las reglas anteriores, y el diagrama E-V, la tarea ahora es especificar todas las tablas necesarias para crear nuestra base de datos.
+
+## Paso 3: Utilizar SQL-DDL para crear las tablas (30 minutos)
+
+El último paso de la primera parte de este tutorial es escribir las sentencias de SQL-DDL para crear las tablas de nuestra base de datos.
+
+Para escribir las sentencias, usamos la instrucción `CREATE TABLE`. La sintaxis detallada para SQLite se puede [encontrar aquí](https://www.sqlite.org/lang_createtable.html).
+
+Al usar `CREATE_TABLE` se debe especificar el tipo de dato de cada columna. Tipos de datos (o "clases de almacenamiento") básicos en SQLite, son los siguientes:
+
+* NULL
+* INTEGER
+* REAL
+* TEXT
+* BLOB
+
+Para crear una clave primaria numérica, que se auto-incremente, se utiliza el tipo `INTEGER PRIMARY KEY ASC` (ver [documentación aquí](https://www.sqlite.org/lang_createtable.html#rowid)).
 
 
 
