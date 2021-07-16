@@ -1,4 +1,5 @@
-# Taller: Diseño e implementación de una base de datos relacional, Parte 1
+# Taller: Diseño e implementación de una base de datos relacional
+## Parte 1
 
 En este taller, vamos a diseñar e implementar una base de datos relacional para una tienda de cervezas al detalle. Para comenzar, desarrollaremos un modelo visual de la base de datos. Luego, especificaremos las relaciones en formato textual y crearemos sentencias de SQL (_Database Description Language_, DDL) para crear las tablas respectivas en la base de datos.
 
