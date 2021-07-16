@@ -10,7 +10,7 @@ Para realizar este taller, necesitarás contar con un par de herramientas gratui
 
 Cuando te hayas registrado y entres a draw.io, verás un menú de inicio:
 
-<img src="imgs/drawio_menu1.png" style="width:25%; display:block; margin-left:auto; margin-right:auto;">
+<img src="imgs/drawio_menu1.png" style="max-width:25%; display:block; margin-left:auto; margin-right:auto;">
 
 Debes elegir la opción "Create New Diagram". Luego, en la ventana siguiente, escoger en el listado a la izquierda "Basic", y en el de la derecha, la opción "Entity Relationship Diagram".
 
