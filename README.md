@@ -59,7 +59,7 @@ Para incorporar vínculos a un diagrama E-V, se utilizan _conectores_ de víncul
 
 Existen varias posibles cardinalidades en los vínculos:
 
-* Uno a uno (1-1): Una Persona tiene un Pasaporte y el Pasaporte puede ser usado por una Persona.
+* Uno a uno (1-1): Una Persona tiene un Pasaporte y el Pasaporte puede ser usado por una Persona (ver figura a continuación, en donde omitimos los atributos de las entidades por simplicidad del diagrama):
 <img src="imgs/persona-pasaporte.svg" style="width:50%; display:block; margin-left:auto; margin-right:auto;">
 * Uno a N (1-N): Una Persona puede tener múltiples (N) Domicilios pero un Domicilio pertenece a sólo una Persona.
 <img src="imgs/persona-domicilio.svg" style="width:50%; display:block; margin-left:auto; margin-right:auto;">
@@ -70,7 +70,9 @@ Como se puede ver arriba, los números (o símbolos) en los extremos del conecto
 
 En los extremos de la relación, las cardinalidades además pueden precisar si hay vínculo posible con cero entidades. Así, en vez de indicar 1 ó N en un extremo del vínculo, es posible indicar 0..N, o 0..1. Por ejemplo, una Persona podría tener de _cero_ a _N_ Vehículos. También, una Persona podría tener de _cero_ a _un_ Pasaporte.
 
-Por último, un vínculo entre dos entidades, puede tener atributos propios que lo describen. Por ejemplo si "Persona _compra un_ Vehículo", el vínculo _compra un_ puede tener un atributo _fecha_ que indique la fecha en la que se realiza la compra. La definición de atributos en los vínculos sólo se utiliza en casos en que es necesario u oportuno. Lo más común es que los vínculos no tengan atributos.
+Por último, un vínculo entre dos entidades, puede tener atributos propios que lo describen. Por ejemplo si "Persona _compra un_ Vehículo" (ver diagrama abajo), el vínculo _compra un_ puede tener un atributo _fecha_ que indique la fecha en la que se realiza la compra. La definición de atributos en los vínculos sólo se utiliza en casos en que es necesario u oportuno. Lo más común es que los vínculos no tengan atributos.
+
+<img src="imgs/persona-vehiculo-atributo-vinculo.svg" style="width:50%; display:block; margin-left:auto; margin-right:auto;">
 
 ## Dominio de Negocio a Modelar
 
