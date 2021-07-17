@@ -26,7 +26,7 @@ Primero, se debe instalar VSCode, siguiendo los pasos a continuación:
 
 * Ir a https://code.visualstudio.com/
 * Pinchar el enlace de descarga "Download" que aparece en la esquina superior derecha de la página, y luego escoger la versión a descargar según el sistema operativo utilizado. Elige la versión de 64 bits para el tipo de computador que utilizas (Windows o Mac).
-* Abrir el instalador una vez descargado y seguir los pasos. El programa VS Code quedará accesible a través del menú inicio (Windows), con el nombre VS Code, o en la carpeta Aplicaciones (Applications) en Mac.
+* Abrir el instalador una vez descargado y seguir los pasos. El programa VS Code quedará accesible a través del menú inicio (Windows), con el nombre "Visual Studio Code", o en la carpeta Aplicaciones (Applications) en Mac.
 * Abrir VS Code y pinchar en el ícono de engranaje que aparece en la parte inferior-izquierda de la ventana. Elegir la opción "Extensions".
 
 <img src="imgs/vscode-gear.png" width="25%" style="width:25%; display:block; margin-left:auto; margin-right:auto;">
