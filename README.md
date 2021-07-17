@@ -55,9 +55,7 @@ En un diagrama E-V, las entidades son representadas por rectángulos rotulados c
 
 Las entidades pueden vincularse entre sí. Por ejemplo, una Persona puede _tener_ cero o más Propiedades (bienes raíces). También, una Persona podría tener cero o más Vehículos inscritos a su nombre. Además, una Persona podría relacionarse con otra Persona si es su cónyuge.
 
-Para incorporar vínculos a un diagrama E-V, se utilizan _conectores_ de vínculo con _extremos_ y _rombo_ al centro. Cada extremo de un vínculo va conectado a una de las entidades del modelo E-V. El rombo de un vínculo indica el tipo de relación que existe entre las entidades. Por ejemplo, "Persona _tiene_ cero o más vehículos", se puede diagramar de la siguiente manera:
-
-Como se puede ver arriba, los números (o símbolos) en los extremos del conector de vínculo indican cuántos entes de un lado del vínculo se pueden relacionar al ente del otro lado del vínculo. Es decir, los extremos del conector de vínculo establecen las cardinalidades posibles en el vínculo.
+Para incorporar vínculos a un diagrama E-V, se utilizan _conectores_ de vínculo con _extremos_ y _rombo_ al centro. Cada extremo de un vínculo va conectado a una de las entidades del modelo E-V. El rombo de un vínculo indica el tipo de relación que existe entre las entidades.
 
 Existen varias posibles cardinalidades en los vínculos:
 
@@ -67,6 +65,8 @@ Existen varias posibles cardinalidades en los vínculos:
 <img src="imgs/persona-domicilio.svg" style="width:50%; display:block; margin-left:auto; margin-right:auto;">
 * N a N (N-N): Una Persona puede ser ciudadano(a) de múltiples (N) países, y a su vez, un país puede tener múltiples (N) Personas ciudadanas.
 <img src="imgs/persona-pais.svg" style="width:50%; display:block; margin-left:auto; margin-right:auto;">
+
+Como se puede ver arriba, los números (o símbolos) en los extremos del conector de vínculo indican cuántos entes de un lado del vínculo se pueden relacionar al ente del otro lado del vínculo. Es decir, los extremos del conector de vínculo establecen las cardinalidades posibles en el vínculo.
 
 En los extremos de la relación, las cardinalidades además pueden precisar si hay vínculo posible con cero entidades. Así, en vez de indicar 1 ó N en un extremo del vínculo, es posible indicar 0..N, o 0..1. Por ejemplo, una Persona podría tener de _cero_ a _N_ Vehículos. También, una Persona podría tener de _cero_ a _un_ Pasaporte.
 
