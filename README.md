@@ -9,7 +9,7 @@ Para realizar este taller, puedes descargar todos los archivos necesarios en for
 
 Luego, necesitarás contar con un par de herramientas gratuitas:
 
-* [draw.io](https://www.draw.io). Se trata de una aplicación web que permite crear distintos tipos de diagramas. Se integra con Google Drive. Para usar draw.io, puedes crear una cuenta utilizando tu usuario Google institucional (@miuandes.cl). 
+* [draw.io](https://www.draw.io). Se trata de una aplicación web que permite crear distintos tipos de diagramas. Se integra con Google Drive. Para usar draw.io, es recomendable usar Google Chrome. No es necesario crear una cuenta para usarlo, pero si optas por usar tu usuario personal (@gmail.com) o institucional (@miuandes.cl) de Google, podrás guardar tu trabajo en Google Drive. 
 
 Cuando te hayas registrado y entres a draw.io, verás un menú de inicio:
 
