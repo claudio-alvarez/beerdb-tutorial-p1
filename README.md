@@ -186,6 +186,36 @@ CREATE TABLE track(
 
 Desafortunadamente, en SQLite **no es posible** agregar claves foráneas a las tablas después de crearlas (p.ej., usando la sentencia `ALTER TABLE`). Se deben crear las tablas siempre indicando todas las claves foráneas que deben contener.
 
+**Restricciones de integridad**
+
+En casos que se requiere definir una clave primaria simple, clave primaria compuesta, clave foránea, es útil definir una restricción de integridad ("_constraint_") en la tabla. 
+
+Por ejemplo, si se necesita que una tabla tenga una clave primaria compuesta:
+
+```sql
+CREATE TABLE car_parts(
+	car_id INTEGER,
+	part_id INTEGER,
+	CONSTRAINT con_pk_car_parts 
+		PRIMARY KEY(car_id, part_id)
+)
+```
+
+Se define una restricción de integridad con nombre arbitrario - en este caso, `con_pk_car_parts` - la cual define que la clave primaria está compuesta por dos columnas definidas antes.
+
+Si se tiene una tabla `A` con una clave foránea a otra tabla `B`, y se requiere que al eliminarse una fila de `B` se elimine la fila correspondiente en `A`, se define una restricción de clave foránea en `A` con eliminación en cascada:
+
+```sql
+CREATE TABLE A(
+	id INTEGER PRIMARY KEY ASC,
+	b_id INTEGER,
+	CONSTRAINT con_fk_b
+		FOREIGN KEY(b_id) 
+		REFERENCES B(id)
+		ON DELETE CASCADE
+)
+```
+
 **Creación de tablas de nuestra tienda de cervezas**
 
 Para crear las tablas de nuestra base de datos, debemos escribir sentencias `CREATE TABLE` para cada una de las tablas necesarias, respetando el orden de vínculos entre tablas. Vale decir, no podemos crear una tabla con una clave foránea a otra, si esta última tabla no existe. Es decir, debemos **comenzar creando tablas que no tengan claves foráneas a otras**, y luego, incorporar tablas con claves foráneas a las tablas que han sido ya creadas.
