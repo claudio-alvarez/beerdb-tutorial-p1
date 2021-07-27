@@ -350,9 +350,7 @@ CREATE TABLE beers_orders(
   CONSTRAINT con_fk_beers
     FOREIGN KEY(beer_id)
     REFERENCES beers(id)
-    ON DELETE CASCADE,
-  CONSTRAINT con_beers_orders_pk 
-    PRIMARY KEY(order_id, beer_id)
+    ON DELETE CASCADE
 );
 
 .schema
