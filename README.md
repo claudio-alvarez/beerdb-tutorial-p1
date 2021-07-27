@@ -285,6 +285,7 @@ CREATE TABLE customers(
   first_name TEXT, 
   last_name TEXT, 
   email TEXT, 
+  dni TEXT,
   country_id INTEGER,
   CONSTRAINT con_fk_countries
     FOREIGN KEY(country_id) 
@@ -295,6 +296,7 @@ CREATE TABLE orders(
   id INTEGER PRIMARY KEY ASC,
   date TEXT,
   customer_id INTEGER,
+  total INTEGER,
   CONSTRAINT con_fk_customers
     FOREIGN KEY(customer_id) 
     REFERENCES customers(id)
@@ -335,6 +337,7 @@ CREATE TABLE beers_orders(
   date TEXT,
   order_id INTEGER,
   beer_id INTEGER,
+  amount INTEGER,
   CONSTRAINT con_fk_orders
     FOREIGN KEY(order_id) 
     REFERENCES orders(id)
