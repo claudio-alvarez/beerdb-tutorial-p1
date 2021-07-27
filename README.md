@@ -96,7 +96,7 @@ Además, observamos que las entidades antes listadas se vinculan de las siguient
 1. Una Cerveza pertenece a una Marca, y una Marca tiene muchas Cervezas (1-N).
 2. Una Marca pertenece a una Cervecería, y una Cervecería tiene muchas marcas (1-N).
 3. Un Cliente cursa muchos Pedidos, y un Pedido es cursado por un Cliente (1-N).
-4. un Pedido tiene muchas Cervezas, y una Cerveza puede estar en muchos Pedidos (N-N).
+4. un Pedido tiene muchas Cervezas, y una Cerveza puede estar en muchos Pedidos (N-N). Un pedido puede tener cantidades distintas de cada tipo de cerveza que lo compone.
 5. Un Cliente pertenece a un País y a un País pertenecen muchos Clientes (1-N).
 
 ## Paso 1: Crear Diagrama E-V (30 minutos)
