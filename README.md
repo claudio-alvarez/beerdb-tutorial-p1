@@ -248,4 +248,8 @@ Si quieres ver los detalles de una tabla en particular, puedes usar `.schema`:
 .schema beers
 ```
 
+Para ver la información de la tabla con una presentación más amigable, también se puede usar la sentencia `pragma` de SQLite con la función `table_info`:
 
+```sql
+pragma table_info('beers');
+```
